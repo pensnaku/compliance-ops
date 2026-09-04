@@ -1,0 +1,46 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const guides = (await getCollection('guides', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Base
+  title="Implementation guides"
+  description="Free, ungated implementation guides for SOC 2, ISO 27001, NIS2, DORA, GDPR and the EU AI Act."
+>
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Free · ungated</span>
+      <h2>Implementation guides</h2>
+      {guides.length === 0 ? (
+        <p class="empty">Guides are being written — the first three cover NIS2, DORA and GDPR. Check back soon.</p>
+      ) : (
+        <ul class="list">
+          {guides.map((g) => (
+            <li>
+              <a href={`/guides/${g.id}/`}>
+                <span class="fw">{g.data.framework}</span>
+                <strong>{g.data.title}</strong>
+                <span class="desc">{g.data.description}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+</Base>
+
+<style>
+  h2 { margin: 10px 0 26px; }
+  .empty { color: var(--muted); }
+  .list { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .list a { display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--line); border-radius: 14px; padding: 26px; background: #fff; color: var(--ink); }
+  .list a:hover { border-color: var(--green); }
+  .fw { font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); font-weight: 600; }
+  .desc { font-size: 13.5px; color: var(--faint); }
+  @media (max-width: 860px) { .list { grid-template-columns: 1fr; } }
+</style>

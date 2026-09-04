@@ -1,0 +1,84 @@
+/* Design tokens — approved canvas "Compliance Site Design". See PRD §2. */
+
+/* BRAND FONT HOOK (PRD §2): when the brand font from ~/Pens/Vervana is wired in,
+   add @font-face rules here and change only the two custom properties below. */
+
+:root {
+  --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Schibsted Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+
+  --bg: #faf9f6;
+  --bg-alt: #f3f1ec;
+  --line: #e7e3db;
+  --ink: #1c2430;
+  --muted: #5c6672;
+  --faint: #8a919c;
+  --green: #0f5f4c;
+  --green-dark: #0a4536;
+  --green-tint: #eef4f0;
+  --green-soft: #7ec8ab;
+  --dark: #1c2430;
+  --amber: #b45309;
+  --amber-soft: #fef3c7;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.55;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--green); text-decoration: none; }
+a:hover { color: var(--green-dark); }
+img, svg { max-width: 100%; }
+
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+.serif { font-family: var(--font-serif); }
+.accent { font-family: var(--font-serif); font-style: italic; color: var(--green); }
+
+.eyebrow {
+  font-size: 12.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 600;
+}
+
+h2 {
+  font-size: clamp(30px, 3.6vw, 42px);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+}
+
+section { padding: 88px 0; }
+.band { background: var(--bg-alt); }
+
+.btn {
+  display: inline-block;
+  background: var(--green);
+  color: #fff;
+  padding: 15px 32px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+.btn:hover { background: var(--green-dark); color: #fff; }
+.btn.outline { background: transparent; border: 1.5px solid var(--green); color: var(--green); padding: 9px 22px; font-size: 14px; }
+.btn.outline:hover { background: var(--green-tint); }
+.btn.light { background: #fff; color: var(--dark); }
+.btn.light:hover { background: #e9ece7; color: var(--dark); }
+
+.textlink { font-weight: 600; border-bottom: 1px solid var(--green); padding-bottom: 2px; }
+
+/* Placeholder marker — remove class usages before launch (PRD §7) */
+.ph { border-bottom: 2px dotted var(--amber); }
+
+@media (max-width: 640px) {
+  section { padding: 60px 0; }
+}

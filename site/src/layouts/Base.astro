@@ -1,0 +1,144 @@
+---
+import '../styles/global.css';
+import { SITE_URL, BRAND_NAME, LEGAL_ENTITY, CONTACT_EMAIL, BOOKING_URL, KVK, VAT } from '../config.ts';
+
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, SITE_URL).href;
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: BRAND_NAME,
+  legalName: LEGAL_ENTITY,
+  url: SITE_URL,
+  email: CONTACT_EMAIL,
+  areaServed: ['EU', 'US'],
+  description:
+    'Hands-on compliance implementation. We build the fixes your compliance platform flags — SOC 2, ISO 27001, GDPR, NIS2, DORA, EU AI Act.',
+});
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json" set:html={jsonLd} />
+  </head>
+  <body>
+    <header>
+      <div class="wrap nav">
+        <a href="/" class="logo" aria-label={`${BRAND_NAME} home`}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2 L21 7 L21 17 L12 22 L3 17 L3 7 Z"></path>
+            <path d="M8.5 12.5 L11 15 L15.5 9.5"></path>
+          </svg>
+          <span class="serif brand ph">{BRAND_NAME}</span>
+        </a>
+        <button class="menu-btn" aria-label="Menu" aria-expanded="false" id="menu-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 7 L20 7"></path><path d="M4 12 L20 12"></path><path d="M4 17 L20 17"></path>
+          </svg>
+        </button>
+        <nav id="nav-links" class="nav-links" aria-label="Main">
+          <a href="/sprints/">Sprints</a>
+          <a href="/how-we-work/">How we work</a>
+          <a href="/regulations/">Regulations</a>
+          <a href="/trust/">Trust</a>
+          <a class="btn outline" href={BOOKING_URL}>Talk to a specialist</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="f-row">
+          <a href="/" class="logo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green-soft)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2 L21 7 L21 17 L12 22 L3 17 L3 7 Z"></path>
+              <path d="M8.5 12.5 L11 15 L15.5 9.5"></path>
+            </svg>
+            <span class="serif brand-f">{BRAND_NAME}</span>
+          </a>
+          <nav aria-label="Footer">
+            <a href="/sprints/">Sprints</a>
+            <a href="/how-we-work/">How we work</a>
+            <a href="/regulations/">Regulations</a>
+            <a href="/trust/">Trust</a>
+            <a href="/guides/">Guides</a>
+          </nav>
+        </div>
+        <div class="imprint">
+          {LEGAL_ENTITY} · Netherlands · KvK <span class="ph">{KVK}</span> · VAT <span class="ph">{VAT}</span> · <span class="ph">{CONTACT_EMAIL}</span><br />
+          Implementation services only — certification and attestation remain with accredited auditors.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById('menu-btn');
+      const nav = document.getElementById('nav-links');
+      btn?.addEventListener('click', () => {
+        const open = nav?.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    </script>
+
+    <style>
+      header {
+        position: sticky; top: 0; z-index: 50;
+        background: color-mix(in srgb, var(--bg) 92%, transparent);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+      .logo { display: flex; align-items: center; gap: 10px; }
+      .brand { font-size: 21px; color: var(--ink); }
+      .nav-links { display: flex; align-items: center; gap: 34px; }
+      .nav-links a { font-size: 14.5px; color: var(--muted); font-weight: 500; }
+      .nav-links a:hover { color: var(--ink); }
+      .nav-links a.btn { color: var(--green); }
+      .menu-btn { display: none; background: none; border: 0; color: var(--muted); cursor: pointer; }
+
+      footer { background: var(--dark); color: #9aa7b5; padding: 48px 0 38px; font-size: 13.5px; }
+      .f-row { display: flex; justify-content: space-between; align-items: center; gap: 30px; flex-wrap: wrap; margin-bottom: 30px; }
+      .brand-f { font-size: 19px; color: #fff; }
+      footer nav { display: flex; gap: 22px; flex-wrap: wrap; }
+      footer a { color: #9aa7b5; }
+      footer a:hover { color: #fff; }
+      .imprint { border-top: 1px solid #2a3442; padding-top: 22px; font-size: 12.5px; line-height: 2; color: #77828f; }
+
+      @media (max-width: 720px) {
+        .menu-btn { display: block; }
+        .nav-links {
+          display: none; position: absolute; top: 68px; left: 0; right: 0;
+          background: var(--bg); flex-direction: column; align-items: flex-start;
+          padding: 20px 28px; gap: 16px; border-bottom: 1px solid var(--line);
+        }
+        .nav-links.open { display: flex; }
+      }
+    </style>
+  </body>
+</html>

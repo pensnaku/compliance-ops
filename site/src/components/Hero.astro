@@ -1,0 +1,135 @@
+---
+import { BOOKING_URL } from '../config.ts';
+---
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow-row">
+        <span class="rule"></span>
+        <span class="eyebrow">Hands-on compliance</span>
+      </div>
+      <h1>
+        Your compliance platform found the gaps.<br />
+        <span class="accent">We close them.</span>
+      </h1>
+      <p class="sub">
+        We don't hand you a report — we build the fix. Your team approves every change
+        before it ships, and we never touch your live systems.
+      </p>
+      <p class="regimes">SOC&nbsp;2 · ISO&nbsp;27001 · GDPR · NIS2 · DORA · EU&nbsp;AI&nbsp;ACT · MORE</p>
+      <div class="ctas">
+        <a class="btn" href={BOOKING_URL}>Talk to a specialist</a>
+        <a class="textlink" href="/how-we-work/">How we work</a>
+      </div>
+      <div class="works-with">
+        <span class="ww-label">Works with your platform</span>
+        <div class="ww-row">
+          <span>Scytale</span><span>Vanta</span><span>Drata</span>
+          <span>AWS</span><span>Azure</span><span>Google Cloud</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="evidence">
+      <div class="evidence-shadow" aria-hidden="true"></div>
+      <div class="evidence-card">
+        <div class="ec-head">
+          <span class="ec-title">Change record #142</span>
+          <span class="ec-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 L10 18 L20 6"></path></svg>
+            Approved
+          </span>
+        </div>
+        <hr />
+        <ul class="ec-rows">
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M8 12.5 L11 15.5 L16 9.5"></path></svg>
+            <div>
+              <strong>NIS2 Art. 21(2) — tamper-proof audit logs</strong>
+              <span>Records kept unaltered for 365 days</span>
+            </div>
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M8 12.5 L11 15.5 L16 9.5"></path></svg>
+            <div>
+              <strong>Evidence pack attached</strong>
+              <span>Ready for your auditor and your dashboard</span>
+            </div>
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M8 12.5 L11 15.5 L16 9.5"></path></svg>
+            <div>
+              <strong>Reviewed and approved by your team</strong>
+              <span>We never touch your live systems</span>
+            </div>
+          </li>
+        </ul>
+        <hr />
+        <div class="ec-foot">
+          <span>Signed off by</span>
+          <strong>A named specialist, accountable to you</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap stats">
+    <div class="stat"><span class="serif n">3+</span><span>years inside compliance</span></div>
+    <span class="sep" aria-hidden="true"></span>
+    <div class="stat"><span class="serif n">4</span><span>EU regimes covered</span></div>
+    <span class="sep" aria-hidden="true"></span>
+    <div class="stat"><span class="serif n g">0</span><span>standing access to your systems</span></div>
+  </div>
+</section>
+
+<style>
+  .hero { padding: 76px 0 0; }
+  .hero-grid { display: flex; align-items: center; gap: 80px; }
+  .hero-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; max-width: 640px; }
+  .eyebrow-row { display: flex; align-items: center; gap: 14px; }
+  .rule { width: 36px; height: 1px; background: var(--green); }
+  h1 { font-size: clamp(38px, 4.6vw, 62px); line-height: 1.08; letter-spacing: -0.015em; font-weight: 500; }
+  .sub { font-size: 19px; line-height: 1.6; color: var(--muted); max-width: 520px; }
+  .regimes { font-size: 12.5px; letter-spacing: 0.14em; color: #6f7a76; font-weight: 600; }
+  .ctas { display: flex; align-items: center; gap: 22px; margin-top: 4px; }
+  .works-with { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; padding-top: 22px; border-top: 1px solid var(--line); align-self: stretch; }
+  .ww-label { font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #9aa1ab; font-weight: 600; }
+  .ww-row { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .ww-row span { font-size: 15px; font-weight: 700; color: #7b828c; }
+
+  .evidence { flex: 1; max-width: 480px; position: relative; }
+  .evidence-shadow { position: absolute; inset: 26px -26px -26px 26px; background: var(--green-tint); border-radius: 16px; }
+  .evidence-card {
+    position: relative; background: #fff; border: 1px solid var(--line); border-radius: 16px;
+    box-shadow: 0 18px 44px rgba(28, 36, 48, 0.08); padding: 30px 32px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .evidence-card hr { border: 0; height: 1px; background: #efece5; }
+  .ec-head { display: flex; align-items: center; justify-content: space-between; }
+  .ec-title { font-size: 15px; font-weight: 700; }
+  .ec-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--green-tint); color: var(--green); font-size: 12.5px; font-weight: 700; padding: 5px 12px; border-radius: 999px; }
+  .ec-rows { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+  .ec-rows li { display: flex; align-items: flex-start; gap: 12px; }
+  .ec-rows svg { flex: none; margin-top: 2px; }
+  .ec-rows div { display: flex; flex-direction: column; gap: 2px; }
+  .ec-rows strong { font-size: 14.5px; font-weight: 600; }
+  .ec-rows span { font-size: 13px; color: var(--faint); }
+  .ec-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .ec-foot span { font-size: 12.5px; color: var(--faint); }
+  .ec-foot strong { font-size: 13px; font-weight: 700; }
+
+  .stats { display: flex; align-items: center; gap: 48px; padding-top: 34px; padding-bottom: 30px; margin-top: 64px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+  .stat { display: flex; align-items: baseline; gap: 10px; }
+  .stat .n { font-size: 30px; }
+  .stat .g { color: var(--green); }
+  .stat span:last-child { font-size: 13.5px; color: #7b828c; }
+  .sep { width: 1px; height: 26px; background: var(--line); }
+
+  @media (max-width: 960px) {
+    .hero-grid { flex-direction: column; align-items: stretch; gap: 64px; }
+    .evidence { max-width: 100%; }
+    .stats { gap: 24px; }
+    .sep { display: none; }
+  }
+</style>
