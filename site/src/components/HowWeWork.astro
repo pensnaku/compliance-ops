@@ -1,50 +1,57 @@
 ---
 const steps = [
-  'Read-only discovery',
-  'A plan you approve first',
-  'Built away from your live systems',
-  'Your team reviews and approves',
-  'Evidence handed over',
+  { title: 'We look first', body: 'Read-only access to start.' },
+  { title: 'You approve the plan', body: 'Nothing changes until you agree.' },
+  { title: 'We work in a copy', body: 'Away from your live systems.' },
+  { title: 'Your team reviews it', body: 'You decide when it goes live.' },
+  { title: 'You get the evidence', body: 'A record ready for your auditor.' },
 ];
 const guarantees = [
   'No standing access to your systems',
   'Everything we do is logged',
-  'Every change reversible',
+  'Every change can be reversed',
   'You own everything we build',
 ];
 ---
 
 <section id="how-we-work">
   <div class="wrap col">
-    <span class="eyebrow">The part nobody else publishes</span>
-    <h2>How we work in your environment</h2>
+    <span class="eyebrow">You stay in control</span>
+    <h2>What it looks like to have us in your environment</h2>
+    <p class="lede">
+      Letting outsiders near your systems should make you a little nervous. This is how we
+      keep you in control.
+    </p>
     <ol class="steps">
       {steps.map((s, i) => (
         <li class="step">
           <span class="serif num">{i + 1}</span>
-          <span class="label">{s}</span>
+          <strong>{s.title}</strong>
+          <span class="body">{s.body}</span>
         </li>
       ))}
     </ol>
     <ul class="pills">
       {guarantees.map((g) => <li>{g}</li>)}
     </ul>
-    <p class="ai-line">AI drafts the work. <span class="accent">A named specialist signs it.</span></p>
-    <p class="ai-sub">That's why sprints take weeks, not quarters.</p>
+    <p class="ai-line">
+      AI drafts the work, so sprints take weeks, not months. <span class="accent">A named
+      specialist</span> checks and signs every change.
+    </p>
   </div>
 </section>
 
 <style>
-  .col { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
-  h2 { margin-bottom: 22px; }
-  .steps { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; align-self: stretch; }
-  .step { border: 1px solid var(--line); border-radius: 16px; padding: 26px 18px; background: #fff; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-  .num { font-size: 22px; font-style: italic; color: var(--green); }
-  .label { font-size: 15px; font-weight: 600; }
+  .col { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+  .lede { margin-bottom: 30px; }
+  .steps { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; align-self: stretch; text-align: left; }
+  .step { border: 1px solid var(--line); border-radius: 16px; padding: 26px 22px; background: var(--surface); display: flex; flex-direction: column; gap: 8px; }
+  .num { font-size: 22px; font-style: italic; color: var(--accent-text); }
+  .step strong { font-size: 16px; font-weight: 600; }
+  .step .body { font-size: 14.5px; line-height: 1.55; color: var(--muted); }
   .pills { list-style: none; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
-  .pills li { font-size: 14px; color: #4d6a5f; border: 1px solid #d8e4dd; background: #fff; border-radius: 999px; padding: 9px 20px; }
-  .ai-line { font-size: 26px; font-weight: 500; margin-top: 28px; letter-spacing: -0.01em; }
-  .ai-sub { font-size: 15px; color: var(--faint); }
-  @media (max-width: 960px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 640px) { .steps { grid-template-columns: 1fr; } }
+  .pills li { font-size: 14px; color: var(--muted); border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 9px 20px; }
+  .ai-line { font-size: 20px; line-height: 1.55; max-width: 720px; margin-top: 32px; }
+  @media (max-width: 1100px) { .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
 </style>

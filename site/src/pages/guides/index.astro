@@ -38,9 +38,9 @@ const guides = (await getCollection('guides', ({ data }) => !data.draft)).sort(
   h2 { margin: 10px 0 26px; }
   .empty { color: var(--muted); }
   .list { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-  .list a { display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--line); border-radius: 14px; padding: 26px; background: #fff; color: var(--ink); }
-  .list a:hover { border-color: var(--green); }
-  .fw { font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); font-weight: 600; }
+  .list a { display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--line); border-radius: 14px; padding: 26px; background: var(--surface); color: var(--ink); }
+  .list a:hover { border-color: var(--accent); }
+  .fw { font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-text); font-weight: 600; }
   .desc { font-size: 13.5px; color: var(--faint); }
   @media (max-width: 860px) { .list { grid-template-columns: 1fr; } }
 </style>

@@ -1,38 +1,40 @@
 ---
 import { BOOKING_URL } from '../config.ts';
+
+// Hero photo: drop the file at site/public/images/hero.jpg (landscape, ~2400px wide).
+const HERO_IMAGE = '/images/hero.jpg';
 ---
 
 <section class="hero">
+  <div class="hero-media" style={`--hero-img: url('${HERO_IMAGE}')`} aria-hidden="true"></div>
+
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <div class="eyebrow-row">
         <span class="rule"></span>
-        <span class="eyebrow">Hands-on compliance</span>
+        <span class="eyebrow">Compliance engineering</span>
       </div>
       <h1>
-        Your compliance platform found the gaps.<br />
-        <span class="accent">We close them.</span>
+        We fix the gaps your compliance checks <span class="accent">keep flagging.</span>
       </h1>
       <p class="sub">
-        We don't hand you a report — we build the fix. Your team approves every change
-        before it ships, and we never touch your live systems.
+        Audit, assessment or platform — you already know what's failing. We build the
+        fixes in a safe copy, your team approves them, and we never keep access to your
+        systems.
       </p>
-      <p class="regimes">SOC&nbsp;2 · ISO&nbsp;27001 · GDPR · NIS2 · DORA · EU&nbsp;AI&nbsp;ACT · MORE</p>
       <div class="ctas">
         <a class="btn" href={BOOKING_URL}>Talk to a specialist</a>
-        <a class="textlink" href="/how-we-work/">How we work</a>
+        <a class="btn ghost" href="/how-we-work/">How we work</a>
       </div>
-      <div class="works-with">
-        <span class="ww-label">Works with your platform</span>
-        <div class="ww-row">
-          <span>Scytale</span><span>Vanta</span><span>Drata</span>
-          <span>AWS</span><span>Azure</span><span>Google Cloud</span>
-        </div>
+
+      <div class="stats">
+        <div class="stat"><span class="n">3+</span><span class="l">years working<br />in compliance</span></div>
+        <div class="stat"><span class="n">6</span><span class="l">frameworks<br />we cover</span></div>
+        <div class="stat"><span class="n">0</span><span class="l">standing access<br />to your systems</span></div>
       </div>
     </div>
 
     <div class="evidence">
-      <div class="evidence-shadow" aria-hidden="true"></div>
       <div class="evidence-card">
         <div class="ec-head">
           <span class="ec-title">Change record #142</span>
@@ -41,7 +43,6 @@ import { BOOKING_URL } from '../config.ts';
             Approved
           </span>
         </div>
-        <hr />
         <ul class="ec-rows">
           <li>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M8 12.5 L11 15.5 L16 9.5"></path></svg>
@@ -65,7 +66,6 @@ import { BOOKING_URL } from '../config.ts';
             </div>
           </li>
         </ul>
-        <hr />
         <div class="ec-foot">
           <span>Signed off by</span>
           <strong>A named specialist, accountable to you</strong>
@@ -74,62 +74,107 @@ import { BOOKING_URL } from '../config.ts';
     </div>
   </div>
 
-  <div class="wrap stats">
-    <div class="stat"><span class="serif n">3+</span><span>years inside compliance</span></div>
-    <span class="sep" aria-hidden="true"></span>
-    <div class="stat"><span class="serif n">4</span><span>EU regimes covered</span></div>
-    <span class="sep" aria-hidden="true"></span>
-    <div class="stat"><span class="serif n g">0</span><span>standing access to your systems</span></div>
+  <div class="wrap">
+    <div class="works-with">
+      <span class="ww-label">Works with your platform</span>
+      <div class="ww-row">
+        <span>Scytale</span><span>Vanta</span><span>Drata</span>
+        <span>AWS</span><span>Azure</span><span>Google Cloud</span>
+      </div>
+      <span class="regimes">SOC&nbsp;2 · ISO&nbsp;27001 · GDPR · NIS2 · DORA · EU&nbsp;AI&nbsp;ACT</span>
+    </div>
   </div>
 </section>
 
 <style>
-  .hero { padding: 76px 0 0; }
-  .hero-grid { display: flex; align-items: center; gap: 80px; }
-  .hero-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; max-width: 640px; }
-  .eyebrow-row { display: flex; align-items: center; gap: 14px; }
-  .rule { width: 36px; height: 1px; background: var(--green); }
-  h1 { font-size: clamp(38px, 4.6vw, 62px); line-height: 1.08; letter-spacing: -0.015em; font-weight: 500; }
-  .sub { font-size: 19px; line-height: 1.6; color: var(--muted); max-width: 520px; }
-  .regimes { font-size: 12.5px; letter-spacing: 0.14em; color: #6f7a76; font-weight: 600; }
-  .ctas { display: flex; align-items: center; gap: 22px; margin-top: 4px; }
-  .works-with { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; padding-top: 22px; border-top: 1px solid var(--line); align-self: stretch; }
-  .ww-label { font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #9aa1ab; font-weight: 600; }
-  .ww-row { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-  .ww-row span { font-size: 15px; font-weight: 700; color: #7b828c; }
+  .hero { position: relative; overflow: hidden; padding: 88px 0 0; min-height: min(calc(100vh - 114px), 820px); display: flex; flex-direction: column; }
+  .hero > .wrap { width: 100%; }
 
-  .evidence { flex: 1; max-width: 480px; position: relative; }
-  .evidence-shadow { position: absolute; inset: 26px -26px -26px 26px; background: var(--green-tint); border-radius: 16px; }
-  .evidence-card {
-    position: relative; background: #fff; border: 1px solid var(--line); border-radius: 16px;
-    box-shadow: 0 18px 44px rgba(28, 36, 48, 0.08); padding: 30px 32px;
-    display: flex; flex-direction: column; gap: 20px;
+  /* Full-bleed photo on the right, fading into charcoal toward the left */
+  .hero-media { position: absolute; top: 0; right: 0; bottom: 0; width: 64%; pointer-events: none; }
+  /* The photo itself (filter applies only here, so the fade stays a pure charcoal) */
+  .hero-media::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--hero-img) 50% 52% / cover no-repeat; /* portrait photo: keep the lit lamps and wet street in frame */
+    filter: grayscale(0.2);
   }
-  .evidence-card hr { border: 0; height: 1px; background: #efece5; }
+  /* Fade: solid charcoal on the left easing to clear on the right, plus a soft bottom fade */
+  .hero-media::after {
+    content: ''; position: absolute; inset: 0;
+    background:
+      linear-gradient(to right,
+        rgb(23 24 26 / 1) 0%,
+        rgb(23 24 26 / 0.94) 12%,
+        rgb(23 24 26 / 0.8) 24%,
+        rgb(23 24 26 / 0.6) 38%,
+        rgb(23 24 26 / 0.38) 52%,
+        rgb(23 24 26 / 0.18) 68%,
+        rgb(23 24 26 / 0.06) 84%,
+        rgb(23 24 26 / 0) 100%),
+      linear-gradient(to top,
+        rgb(23 24 26 / 1) 0%,
+        rgb(23 24 26 / 0.6) 10%,
+        rgb(23 24 26 / 0) 30%);
+  }
+
+  .hero-grid { position: relative; flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 64px; }
+  .hero-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; max-width: 720px; }
+  .eyebrow-row { display: flex; align-items: center; gap: 14px; }
+  .rule { width: 36px; height: 1px; background: var(--accent); }
+  h1 { font-size: clamp(40px, 4.4vw, 64px); line-height: 1.05; letter-spacing: -0.025em; font-weight: 500; text-wrap: balance; }
+  h1 .accent { color: var(--ink); display: inline; }
+  .sub { font-size: 18px; line-height: 1.6; color: #d4d2cd; max-width: 520px; }
+  .ctas { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .ctas .btn { border-radius: 8px; padding: 14px 24px; font-size: 15px; }
+  .btn.ghost { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line); color: var(--ink); }
+  .btn.ghost:hover { background: rgba(255, 255, 255, 0.09); color: var(--ink); }
+
+  .stats { display: flex; gap: 56px; margin-top: 22px; flex-wrap: wrap; }
+  .stat { display: flex; flex-direction: column; gap: 8px; }
+  .stat .n { font-size: 40px; line-height: 1; font-weight: 500; letter-spacing: -0.02em; }
+  .stat .l { font-size: 12.5px; line-height: 1.4; color: var(--muted); }
+
+  /* Glass card floating over the photo */
+  .evidence { flex: none; width: 380px; margin-top: 120px; }
+  .evidence-card {
+    background: rgba(23, 24, 26, 0.62); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(233, 222, 199, 0.14); border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28); padding: 22px 24px;
+    display: flex; flex-direction: column; gap: 18px;
+  }
   .ec-head { display: flex; align-items: center; justify-content: space-between; }
-  .ec-title { font-size: 15px; font-weight: 700; }
-  .ec-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--green-tint); color: var(--green); font-size: 12.5px; font-weight: 700; padding: 5px 12px; border-radius: 999px; }
-  .ec-rows { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+  .ec-title { font-size: 13.5px; font-weight: 600; }
+  .ec-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--green-tint); color: var(--green); font-size: 11.5px; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+  .ec-rows { list-style: none; display: flex; flex-direction: column; gap: 14px; }
   .ec-rows li { display: flex; align-items: flex-start; gap: 12px; }
   .ec-rows svg { flex: none; margin-top: 2px; }
   .ec-rows div { display: flex; flex-direction: column; gap: 2px; }
-  .ec-rows strong { font-size: 14.5px; font-weight: 600; }
-  .ec-rows span { font-size: 13px; color: var(--faint); }
-  .ec-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-  .ec-foot span { font-size: 12.5px; color: var(--faint); }
-  .ec-foot strong { font-size: 13px; font-weight: 700; }
+  .ec-rows strong { font-size: 13.5px; font-weight: 600; }
+  .ec-rows span { font-size: 12.5px; color: var(--muted); }
+  .ec-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 14px; border-top: 1px solid rgba(233, 222, 199, 0.12); }
+  .ec-foot span { font-size: 12px; color: var(--faint); }
+  .ec-foot strong { font-size: 12.5px; font-weight: 600; }
 
-  .stats { display: flex; align-items: center; gap: 48px; padding-top: 34px; padding-bottom: 30px; margin-top: 64px; border-top: 1px solid var(--line); flex-wrap: wrap; }
-  .stat { display: flex; align-items: baseline; gap: 10px; }
-  .stat .n { font-size: 30px; }
-  .stat .g { color: var(--green); }
-  .stat span:last-child { font-size: 13.5px; color: #7b828c; }
-  .sep { width: 1px; height: 26px; background: var(--line); }
+  /* Logo strip along the bottom */
+  .hero > .wrap:last-child { position: relative; }
+  .works-with { display: flex; align-items: center; gap: 40px; flex-wrap: wrap;
+    padding-top: 26px; padding-bottom: 26px; margin-top: 56px; border-top: 1px solid var(--line);
+  }
+  .ww-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--faint); font-weight: 600; }
+  .ww-row { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+  .ww-row span { font-size: 15px; font-weight: 700; color: var(--muted); opacity: 0.8; }
+  .regimes { margin-left: auto; font-size: 11.5px; letter-spacing: 0.14em; color: var(--faint); font-weight: 600; }
 
-  @media (max-width: 960px) {
-    .hero-grid { flex-direction: column; align-items: stretch; gap: 64px; }
-    .evidence { max-width: 100%; }
-    .stats { gap: 24px; }
-    .sep { display: none; }
+  @media (max-width: 1080px) {
+    .hero-grid { flex-direction: column; align-items: flex-start; gap: 40px; }
+    .evidence { width: 100%; max-width: 420px; margin-top: 0; }
+  }
+  @media (max-width: 760px) {
+    .hero { min-height: 0; padding-top: 64px; }
+    .hero-media { width: 100%; opacity: 0.45; }
+    .hero-media::after { background: linear-gradient(to top, var(--bg) 0%, rgba(23, 24, 26, 0.6) 60%, rgba(23, 24, 26, 0.4) 100%); }
+    .stats { gap: 32px; }
+    .works-with { gap: 20px; }
+    .regimes { margin-left: 0; }
   }
 </style>

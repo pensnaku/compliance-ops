@@ -7,19 +7,24 @@
   --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
   --font-sans: 'Schibsted Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
 
-  --bg: #faf9f6;
-  --bg-alt: #f3f1ec;
-  --line: #e7e3db;
-  --ink: #1c2430;
-  --muted: #5c6672;
-  --faint: #8a919c;
-  --green: #0f5f4c;
-  --green-dark: #0a4536;
-  --green-tint: #eef4f0;
-  --green-soft: #7ec8ab;
-  --dark: #1c2430;
-  --amber: #b45309;
-  --amber-soft: #fef3c7;
+  /* Palette: charcoal background, sand type, bronze accent; green reserved for approved/passing states */
+  --bg: #17181a;          /* charcoal (neutral-cool, blends with the photo) */
+  --bg-alt: #1e1f22;      /* charcoal, raised band */
+  --surface: #25272a;     /* cards */
+  --line: #35373b;
+  --ink: #e9dec7;         /* sand */
+  --muted: #c9c5bc;       /* neutral stone — secondary text */
+  --faint: #8e8b85;
+  --accent: #e0a34a;      /* bronze — buttons, strokes (matches the hero lamplight) */
+  --accent-dark: #ecb562; /* button hover (lifts on dark) */
+  --accent-text: #eebc74; /* lighter bronze for links / small text on charcoal (legibility) */
+  --accent-tint: rgba(224, 163, 74, 0.14);
+  --accent-soft: #edc27e;
+  --green: #5bbd8f;       /* approved / passing states only */
+  --green-tint: rgba(63, 163, 122, 0.18);
+  --dark: #101113;        /* deeper charcoal — CTA band, footer */
+  --amber: #e0a34a;
+  --amber-soft: rgba(224, 163, 74, 0.15);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,19 +37,19 @@ body {
   font-size: 17px;
   -webkit-font-smoothing: antialiased;
 }
-a { color: var(--green); text-decoration: none; }
-a:hover { color: var(--green-dark); }
+a { color: var(--accent-text); text-decoration: none; }
+a:hover { color: var(--ink); }
 img, svg { max-width: 100%; }
 
-.wrap { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+.wrap { max-width: 1520px; margin: 0 auto; padding: 0 clamp(20px, 3.2vw, 48px); }
 .serif { font-family: var(--font-serif); }
-.accent { font-family: var(--font-serif); font-style: italic; color: var(--green); }
+.accent { font-family: var(--font-serif); font-style: italic; color: var(--accent-text); }
 
 .eyebrow {
   font-size: 12.5px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--green);
+  color: var(--accent-text);
   font-weight: 600;
 }
 
@@ -60,24 +65,26 @@ section { padding: 88px 0; }
 
 .btn {
   display: inline-block;
-  background: var(--green);
-  color: #fff;
+  background: var(--accent);
+  color: var(--dark);
   padding: 15px 32px;
   border-radius: 999px;
   font-size: 16px;
   font-weight: 600;
   transition: background 0.15s;
 }
-.btn:hover { background: var(--green-dark); color: #fff; }
-.btn.outline { background: transparent; border: 1.5px solid var(--green); color: var(--green); padding: 9px 22px; font-size: 14px; }
-.btn.outline:hover { background: var(--green-tint); }
-.btn.light { background: #fff; color: var(--dark); }
-.btn.light:hover { background: #e9ece7; color: var(--dark); }
+.btn:hover { background: var(--accent-dark); color: var(--dark); }
+.btn.outline { background: transparent; border: 1.5px solid var(--accent); color: var(--accent-text); padding: 9px 22px; font-size: 14px; }
+.btn.outline:hover { background: var(--accent-tint); }
+.btn.light { background: var(--ink); color: var(--dark); }
+.btn.light:hover { background: #f6eedd; color: var(--dark); }
 
-.textlink { font-weight: 600; border-bottom: 1px solid var(--green); padding-bottom: 2px; }
+.lede { font-size: 18px; line-height: 1.65; color: var(--muted); max-width: 640px; }
+
+.textlink { font-weight: 600; border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
 
 /* Placeholder marker — remove class usages before launch (PRD §7) */
-.ph { border-bottom: 2px dotted var(--amber); }
+.ph { border-bottom: 2px dotted #e05252; } /* red: unmistakably "fix before launch" now that amber is the brand accent */
 
 @media (max-width: 640px) {
   section { padding: 60px 0; }

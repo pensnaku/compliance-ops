@@ -6,4 +6,10 @@ export default defineConfig({
   site: SITE_URL,
   integrations: [sitemap()],
   output: 'static',
+  vite: {
+    server: {
+      // Dev only: let ngrok tunnels reach the dev server (leading dot = any subdomain).
+      allowedHosts: ['.ngrok-free.app', '.ngrok.app', '.ngrok.io'],
+    },
+  },
 });

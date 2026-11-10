@@ -1,42 +1,62 @@
+---
+const steps = [
+  {
+    title: 'You send us the finding',
+    body: 'We take a read-only look and tell you what we’d change.',
+  },
+  {
+    title: 'We build the fix',
+    body: 'In a safe copy of your setup, never on your live systems.',
+  },
+  {
+    title: 'Your team approves it',
+    body: 'You decide when it goes live, and keep the record for your auditor.',
+  },
+];
+---
+
 <section class="center">
   <div class="wrap col">
-    <span class="eyebrow">The gap</span>
-    <h2>Everyone finds gaps. <span class="accent">We close them.</span></h2>
-    <div class="flow" role="list">
-      <div class="node" role="listitem">
-        <strong>Your platform flags it</strong>
-        <span>a failing control</span>
-      </div>
-      <svg class="arrow" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 L19 12"></path><path d="M13 6 L19 12 L13 18"></path></svg>
-      <div class="node hot" role="listitem">
-        <strong>We build the fix</strong>
-        <span>in a safe copy, never live</span>
-      </div>
-      <svg class="arrow" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 L19 12"></path><path d="M13 6 L19 12 L13 18"></path></svg>
-      <div class="node" role="listitem">
-        <strong>Your team approves it</strong>
-        <span>reviewed, approved, evidenced</span>
-      </div>
-    </div>
+    <span class="eyebrow">How a fix happens</span>
+    <h2>From a failing control to a <span class="accent">signed-off fix</span></h2>
+    <p class="lede">
+      Say your platform flags that admins can edit your audit logs. Usually that sits in
+      the backlog for months. Here's what we do with it.
+    </p>
+    <ol class="flow">
+      {steps.map((s, i) => (
+        <>
+          {i > 0 && (
+            <svg class="arrow" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 L19 12"></path><path d="M13 6 L19 12 L13 18"></path></svg>
+          )}
+          <li class={`node${i === 1 ? ' hot' : ''}`}>
+            <span class="serif num">{i + 1}</span>
+            <strong>{s.title}</strong>
+            <span class="body">{s.body}</span>
+          </li>
+        </>
+      ))}
+    </ol>
   </div>
 </section>
 
 <style>
-  .col { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
-  h2 { margin-bottom: 22px; }
-  .flow { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; }
+  .col { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+  .lede { margin-bottom: 30px; }
+  .flow { list-style: none; display: flex; align-items: stretch; justify-content: center; gap: 6px; align-self: stretch; }
   .node {
-    border: 1px solid var(--line); border-radius: 16px; padding: 28px 32px; background: #fff;
-    display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 240px;
+    flex: 1; max-width: 360px; text-align: left;
+    border: 1px solid var(--line); border-radius: 16px; padding: 28px 30px; background: var(--surface);
+    display: flex; flex-direction: column; gap: 8px;
   }
-  .node strong { font-size: 16px; font-weight: 700; }
-  .node span { font-size: 13.5px; color: var(--faint); }
-  .node.hot { border-color: var(--green); background: var(--green-tint); }
-  .node.hot strong { color: var(--green-dark); }
-  .node.hot span { color: #4d6a5f; }
-  .arrow { margin: 0 16px; flex: none; }
+  .num { font-size: 22px; font-style: italic; color: var(--accent-text); }
+  .node strong { font-size: 17px; font-weight: 600; }
+  .node .body { font-size: 15px; line-height: 1.6; color: var(--muted); }
+  .node.hot { border-color: var(--accent); background: var(--accent-tint); }
+  .arrow { margin: 0 12px; flex: none; align-self: center; }
   @media (max-width: 860px) {
-    .flow { flex-direction: column; }
+    .flow { flex-direction: column; align-items: center; }
+    .node { max-width: 520px; width: 100%; }
     .arrow { transform: rotate(90deg); margin: 4px 0; }
   }
 </style>

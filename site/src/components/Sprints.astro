@@ -4,8 +4,11 @@ import { sprints, alsoCovered } from '../data/sprints.ts';
 
 <section class="band">
   <div class="wrap col">
-    <span class="eyebrow">Fixed scope · priced up front</span>
-    <h2>Remediation sprints</h2>
+    <span class="eyebrow">Fixed scope, priced up front</span>
+    <h2>Most of our work happens in sprints</h2>
+    <p class="lede">
+      One regulation, a fixed scope, a price agreed up front. Most take four to six weeks.
+    </p>
     <div class="cards">
       {sprints.map((s) => (
         <article class="card">
@@ -22,40 +25,42 @@ import { sprints, alsoCovered } from '../data/sprints.ts';
     </div>
     <div class="retainer">
       <div>
-        <strong>Ongoing retainer</strong>
-        <p>Controls kept green, evidence maintained, a specialist on call.</p>
+        <strong>Staying on after the sprint</strong>
+        <p>We can keep your controls passing, keep the evidence current, and be there when your auditor has questions.</p>
       </div>
       <span class="serif r-price ph">€5–12k / month</span>
     </div>
     <p class="also">
-      <span class="also-label">Also covered</span>
-      {alsoCovered}
+      <span class="also-label">We also work on</span>
+      <span>{alsoCovered}</span>
     </p>
   </div>
 </section>
 
 <style>
   .col { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
-  h2 { margin-bottom: 22px; }
+  .lede { margin-bottom: 30px; }
+  .card li { line-height: 1.5; }
+  .also > span:last-child { max-width: 720px; }
   .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; align-self: stretch; text-align: left; }
-  .card { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 30px; display: flex; flex-direction: column; gap: 16px; }
-  .fw { font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); font-weight: 600; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 30px; display: flex; flex-direction: column; gap: 16px; }
+  .fw { font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-text); font-weight: 600; }
   .card ul { list-style: none; flex: 1; }
-  .card li { font-size: 15px; color: #414b58; padding: 9px 0; border-bottom: 1px solid #f0ede6; }
+  .card li { font-size: 15px; color: var(--muted); padding: 9px 0; border-bottom: 1px solid var(--line); }
   .card li:last-child { border-bottom: 0; }
   .price-row { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--line); padding-top: 16px; }
   .price-row strong { font-size: 20px; font-weight: 700; }
   .price-row span { font-size: 13px; color: var(--faint); }
   .retainer {
-    align-self: stretch; background: var(--green); border-radius: 18px; padding: 26px 34px;
+    align-self: stretch; background: var(--accent); border-radius: 18px; padding: 26px 34px;
     display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
     margin-top: 10px; text-align: left;
   }
-  .retainer strong { font-size: 17px; color: #fff; display: block; }
-  .retainer p { font-size: 14px; color: #bcd8ce; }
-  .r-price { font-size: 24px; color: #fff; white-space: nowrap; }
-  .also { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: center; font-size: 14px; color: #6f7a76; margin-top: 14px; }
-  .also-label { font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #9aa1ab; font-weight: 600; }
+  .retainer strong { font-size: 17px; color: var(--dark); display: block; }
+  .retainer p { font-size: 14px; color: rgba(16, 17, 19, 0.78); }
+  .r-price { font-size: 24px; color: var(--dark); white-space: nowrap; }
+  .also { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: center; font-size: 14px; color: var(--muted); margin-top: 14px; }
+  .also-label { font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--faint); font-weight: 600; }
   @media (max-width: 960px) { .cards { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
 </style>
